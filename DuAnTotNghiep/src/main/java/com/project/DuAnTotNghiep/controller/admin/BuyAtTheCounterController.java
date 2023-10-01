@@ -5,11 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class IndexController {
+public class BuyAtTheCounterController {
 
-    @GetMapping("getindex")
+    @GetMapping("getBuyHome")
     public String getIndex(Model model) {
-        model.addAttribute("layoutAdmin", "admin/index");
-        return "admin/layoutAdmin";
+        return "admin/BuyAtTheCounter";
     }
 }

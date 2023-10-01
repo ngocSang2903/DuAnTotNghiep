@@ -12,6 +12,5 @@ public class ShopProductController {
     @GetMapping("getproduct")
     public String getProduct(Model model) {
         model.addAttribute("layoutUser", "user/shop-product");
-        return "user/layout";
-    }
+        return "user/layout-user";    }
 }

@@ -12,6 +12,6 @@ public class AboutController {
     @GetMapping("getabout")
     public String getAbout(Model model) {
         model.addAttribute("layoutUser", "user/about");
-        return "user/layout";
+        return "user/layout-user";
     }
 }

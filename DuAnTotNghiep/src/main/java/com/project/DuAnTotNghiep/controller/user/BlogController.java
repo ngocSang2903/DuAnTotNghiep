@@ -11,13 +11,12 @@ public class BlogController {
     @GetMapping("getblog")
     public String getBlog(Model model) {
         model.addAttribute("layoutUser", "user/blog");
-        return "user/layout";
-    }
+        return "user/layout-user";    }
 
 
     @GetMapping("getblogdetail")
     public String getBlogDetail(Model model) {
         model.addAttribute("layoutUser", "user/blog-detail");
-        return "user/layout";
+        return "layout-user";
     }
 }
