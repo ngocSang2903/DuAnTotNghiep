@@ -11,6 +11,5 @@ public class ContactController {
     @GetMapping("getcontact")
     public String getContact(Model model) {
         model.addAttribute("layoutUser", "user/contact");
-        return "user/layout";
-    }
+        return "user/layout-user";    }
 }
