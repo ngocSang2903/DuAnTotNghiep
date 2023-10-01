@@ -26,7 +26,7 @@ public class Account implements Serializable {
     private String password;
     private Date createDate;
     private Date updateDate;
-    private Integer status;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "roleId")

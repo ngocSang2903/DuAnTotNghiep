@@ -29,11 +29,10 @@ public class Product implements Serializable {
     @JoinColumn(name = "materialId")
     private Material material;
 
-    private String sku;
     private double price;
     private Date createdate;
     private Date updatedate;
-    private String status;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")

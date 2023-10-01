@@ -20,10 +20,10 @@ public class Bill implements Serializable {
 
     private int quantity;
     private double price;
-    private double promotionprice;
-    private Date createdate;
-    private Date updatedate;
-    private String status;
+    private double promotionPrice;
+    private Date createDate;
+    private Date updateDate;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "accountId")

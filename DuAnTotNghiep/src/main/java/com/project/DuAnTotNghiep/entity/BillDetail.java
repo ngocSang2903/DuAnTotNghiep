@@ -28,12 +28,14 @@ public class BillDetail implements Serializable {
     private Date completionDate;
     private Date expectedDate;
     private double shipPrice;
-    private double total;
     private String status;
     private Date updateDate;
     private Date createDate;
 
     @ManyToOne
-    @JoinColumn(name = "productId")
-    private Product product;
+    @JoinColumn(name = "productDetailId")
+    private ProductDetail productDetail;
+    @ManyToOne
+    @JoinColumn(name = "billId")
+    private Bill bill;
 }

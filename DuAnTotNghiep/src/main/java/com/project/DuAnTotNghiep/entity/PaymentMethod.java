@@ -18,4 +18,5 @@ public class PaymentMethod implements Serializable {
     private Long id;
     private String code;
     private String name;
+    private int status;
 }

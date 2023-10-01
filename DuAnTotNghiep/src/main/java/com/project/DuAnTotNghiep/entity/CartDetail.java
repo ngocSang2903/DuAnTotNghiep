@@ -19,8 +19,8 @@ public class CartDetail implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "productId")
-    private Product product;
+    @JoinColumn(name = "productDetailId")
+    private ProductDetail productDetail;
 
     @ManyToOne
     @JoinColumn(name = "cartId")

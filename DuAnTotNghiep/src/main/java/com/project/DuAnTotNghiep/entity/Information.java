@@ -26,7 +26,7 @@ public class Information implements Serializable {
     private String country;
     private Date createDate;
     private Date updateDate;
-    private String status;
+    private int status;
     @JoinColumn(name = "accountId")
     @ManyToOne
     private Account accountId;

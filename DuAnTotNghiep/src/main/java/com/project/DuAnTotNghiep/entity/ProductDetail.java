@@ -30,9 +30,13 @@ public class ProductDetail implements Serializable {
     private double price;
     private Date createDate;
     private Date updateDate;
-    private String status;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "imageId")
     private Image image;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
 }
