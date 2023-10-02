@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Bill")
@@ -24,8 +25,12 @@ public class Bill implements Serializable {
     private Date createDate;
     private Date updateDate;
     private int status;
+    private int invoiceType;
 
     @ManyToOne
     @JoinColumn(name = "accountId")
     private Account account;
+
+    @OneToMany
+    private List<BillDetail> billDetailList;
 }

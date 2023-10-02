@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin-layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form>
+        <div class="m-3">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="Code">Mã hóa đơn</label>
+                    <input type="text" class="form-control" id="Code" placeholder="ID Bill">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="Code">Bắt đầu</label>
+                    <input type="date" class="form-control" id="Code" placeholder="Name Bill">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="Code">Kết thúc</label>
+                    <input type="date" class="form-control" id="Code" placeholder="Name Bill">
+                </div>
+                <div class="form-group col-md-2">
+                    <div class="form-group">
+                        <label for="sel1">Trạng thái:</label>
+                        <select class="form-control" id="sel1">
+                            <option selected>Mời chọn</option>
+                            <option>Khởi tạo</option>
+                            <option>Đang sử lý</option>
+                            <option>Đang giao hàng</option>
+                            <option value="2">Hoàn thành</option>
+                            <option value="2">Chờ xác nhận</option>
+                            <option value="2">Hủy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <div class="form-group">
+                        <label for="sel1">Loại đơn:</label>
+                        <select class="form-control" id="sel1">
+                            <option selected>Mời chọn</option>
+                            <option>Tại quầy</option>
+                            <option>Trực tuyến</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary m-1"><i class="fa fa-search"></i> Search
+            </button>
+            <button type="button" class="btn btn-primary m-1"><i class="fa fa-level-down"></i> Export excel
+            </button>
+        </div>
+    </form>
+
+
+    <table class="table border m-3">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Mã hóa đơn</th>
+            <th scope="col">Họ và tên</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Tổng tiền</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Loại đơn</th>
+            <th scope="col">Hình thức thanh toán</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="items:${items}">
+            <th scope="row" th:text="${items.maHoaDon}">HD09347</th>
+            <td th:text="${items.hoVaTen}">Mark</td>
+            <td th:text="${items.soDienThoai}">03843234</td>
+            <td th:text="${items.tongTien}">3.000.000</td>
+            <td>
+                <div class="form-group">
+                    <select class="form-control">\
+                        <option>Khởi tạo</option>
+                        <option>Đang sử lý</option>
+                        <option>Đang giao hàng</option>
+                        <option value="2">Hoàn thành</option>
+                        <option value="2">Chờ xác nhận</option>
+                        <option value="2">Hủy</option>
+                    </select>
+                </div>
+            </td>
+            <td th:text="${items.loaiDon}">Tại quầy</td>
+            <td th:text="${items.hinhThucThanhToan}">Tiền mặt</td>
+            <td><a href=""><i class="fa fa-eye"></i></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProductDetailController {
 
-    @GetMapping("user/product/getproductdetail")
+    @GetMapping("/user/getproductdetail")
     public String getProductDetail(Model model) {
         model.addAttribute("layoutUser", "user/product-detail");
         return "user/layout-user";
