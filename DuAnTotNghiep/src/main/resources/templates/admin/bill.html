@@ -7,50 +7,44 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <form>
+    <form th:action="@{/admin/bill-list-search}" method="GET">
         <div class="m-3">
             <div class="form-row">
                 <div class="form-group col-md-2">
-                    <label for="Code">Mã hóa đơn</label>
-                    <input type="text" class="form-control" id="Code" placeholder="ID Bill">
+                    <label for="maHoaDon">Mã hóa đơn</label>
+                    <input type="text" class="form-control" id="maHoaDon" name="maHoaDon" placeholder="Mã hóa đơn">
                 </div>
                 <div class="form-group col-md-2">
-                    <label for="Code">Bắt đầu</label>
-                    <input type="date" class="form-control" id="Code" placeholder="Name Bill">
+                    <label for="ngayTaoStart">Bắt đầu</label>
+                    <input type="date" class="form-control" id="ngayTaoStart" name="ngayTaoStart" placeholder="Bắt đầu">
                 </div>
                 <div class="form-group col-md-2">
-                    <label for="Code">Kết thúc</label>
-                    <input type="date" class="form-control" id="Code" placeholder="Name Bill">
+                    <label for="ngayTaoEnd">Kết thúc</label>
+                    <input type="date" class="form-control" id="ngayTaoEnd" name="ngayTaoEnd" placeholder="Kết thúc">
                 </div>
                 <div class="form-group col-md-2">
-                    <div class="form-group">
-                        <label for="sel1">Trạng thái:</label>
-                        <select class="form-control" id="sel1">
-                            <option selected>Mời chọn</option>
-                            <option>Khởi tạo</option>
-                            <option>Đang sử lý</option>
-                            <option>Đang giao hàng</option>
-                            <option value="2">Hoàn thành</option>
-                            <option value="2">Chờ xác nhận</option>
-                            <option value="2">Hủy</option>
-                        </select>
-                    </div>
+                    <label for="trangThai">Trạng thái</label>
+                    <select class="form-control" id="trangThai" name="trangThai">
+                        <option value="">Mời chọn</option>
+                        <option value="1">Khởi tạo</option>
+                        <option value="2">Đang sử lý</option>
+                        <option value="3">Đang giao hàng</option>
+                        <option value="4">Hoàn thành</option>
+                        <option value="5">Chờ xác nhận</option>
+                        <option value="6">Hủy</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-2">
-                    <div class="form-group">
-                        <label for="sel1">Loại đơn:</label>
-                        <select class="form-control" id="sel1">
-                            <option selected>Mời chọn</option>
-                            <option>Tại quầy</option>
-                            <option>Trực tuyến</option>
-                        </select>
-                    </div>
+                    <label for="loaiDon">Loại đơn</label>
+                    <select class="form-control" id="loaiDon" name="loaiDon">
+                        <option value="">Mời chọn</option>
+                        <option value="2">Tại quầy</option>
+                        <option value="1">Trực tuyến</option>
+                    </select>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary m-1"><i class="fa fa-search"></i> Search
-            </button>
-            <button type="button" class="btn btn-primary m-1"><i class="fa fa-level-down"></i> Export excel
-            </button>
+            <button type="submit" class="btn btn-primary m-1"><i class="fa fa-search"></i> Search</button>
+            <button type="button" class="btn btn-primary m-1"><i class="fa fa-level-down"></i> Export excel</button>
         </div>
     </form>
 
@@ -58,14 +52,28 @@
     <table class="table border m-3">
         <thead class="thead-light">
         <tr>
-            <th scope="col">Mã hóa đơn</th>
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Tổng tiền</th>
+            <th scope="col">Mã hóa đơn<br>
+                <a th:href="@{/admin/bill-list(page=0, sort='maHoaDon,asc')}" class="sort-link">↑</a>
+                <a th:href="@{/admin/bill-list(page=0, sort='maHoaDon,desc')}" class="sort-link">↓</a>
+            </th>
+            <th scope="col">Họ và tên<br>
+                <a th:href="@{/admin/bill-list(page=0, sort='hoVaTen,asc')}" class="sort-link">↑</a>
+                <a th:href="@{/admin/bill-list(page=0, sort='hoVaTen,desc')}" class="sort-link">↓</a>
+            </th>
+            <th scope="col">Số điện thoại<br>
+                <a th:href="@{/admin/bill-list(page=0, sort='soDienThoai,asc')}" class="sort-link">↑</a>
+                <a th:href="@{/admin/bill-list(page=0, sort='soDienThoai,desc')}" class="sort-link">↓</a>
+            </th>
+            <th scope="col">Ngay dat<br>
+            </th>
+            <th scope="col">Tổng tiền<br>
+                <a th:href="@{/admin/bill-list(page=0, sort='tongTien,asc')}" class="sort-link">↑</a>
+                <a th:href="@{/admin/bill-list(page=0, sort='tongTien,desc')}" class="sort-link">↓</a>
+            </th>
             <th scope="col">Trạng thái</th>
             <th scope="col">Loại đơn</th>
             <th scope="col">Hình thức thanh toán</th>
-            <th scope="col">Action</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -73,26 +81,52 @@
             <th scope="row" th:text="${items.maHoaDon}">HD09347</th>
             <td th:text="${items.hoVaTen}">Mark</td>
             <td th:text="${items.soDienThoai}">03843234</td>
+            <td th:text="${items.ngayTao}">03843234</td>
             <td th:text="${items.tongTien}">3.000.000</td>
             <td>
+                <form th:action="@{'/admin/update-bill-status/' + ${items.maHoaDon}}" method="get">
                 <div class="form-group">
-                    <select class="form-control">\
-                        <option>Khởi tạo</option>
-                        <option>Đang sử lý</option>
-                        <option>Đang giao hàng</option>
-                        <option value="2">Hoàn thành</option>
-                        <option value="2">Chờ xác nhận</option>
-                        <option value="2">Hủy</option>
+                    <select class="form-control" name="status" onchange="this.form.submit()">
+                        <option value="1" th:selected="${items.trangThai == 1}">Khởi tạo</option>
+                        <option value="2" th:selected="${items.trangThai == 2}">Đang sử lý</option>
+                        <option value="3" th:selected="${items.trangThai == 3}">Đang giao hàng</option>
+                        <option value="4" th:selected="${items.trangThai == 4}">Hoàn thành</option>
+                        <option value="5" th:selected="${items.trangThai == 5}">Chờ xác nhận</option>
+                        <option value="6" th:selected="${items.trangThai == 6}">Hủy</option>
                     </select>
                 </div>
+                </form>
             </td>
-            <td th:text="${items.loaiDon}">Tại quầy</td>
+            <td>
+                <span th:if="${items.loaiDon != 1}">Tại quầy</span>
+                <span th:if="${items.loaiDon == 1}">Online</span>
+            </td>
             <td th:text="${items.hinhThucThanhToan}">Tiền mặt</td>
             <td><a href=""><i class="fa fa-eye"></i></a></td>
         </tr>
-
         </tbody>
     </table>
+    <div class="clearfix">
+        <ul class="pagination">
+            <li th:if="${items.hasPrevious()}" class="page-item">
+                <a th:href="@{/admin/bill-list(page=0, sort=${sortField + ',' + (sortDirection == 'asc' ? 'desc' : 'asc')})}"
+                   class="page-link">First</a>
+            </li>
+            <li th:if="${items.hasPrevious()}" class="page-item">
+                <a th:href="@{/admin/bill-list(page=${items.number - 1}, sort=${sortField + ',' + (sortDirection == 'asc' ? 'desc' : 'asc')})}"
+                   class="page-link">Previous</a>
+            </li>
+            <li th:if="${items.hasNext()}" class="page-item">
+                <a th:href="@{/admin/bill-list(page=${items.number + 1}, sort=${sortField + ',' + (sortDirection == 'asc' ? 'desc' : 'asc')})}"
+                   class="page-link">Next</a>
+            </li>
+            <li th:if="${items.hasNext()}" class="page-item">
+                <a th:href="@{/admin/bill-list(page=${items.totalPages - 1}, sort=${sortField + ',' + (sortDirection == 'asc' ? 'desc' : 'asc')})}"
+                   class="page-link">Last</a>
+            </li>
+        </ul>
+    </div>
 </div>
+
 </body>
 </html>

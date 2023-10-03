@@ -14,7 +14,7 @@ public class BillDto {
     private String hoVaTen;
     private String soDienThoai;
     private Double tongTien;
-    private Integer trangThai;
-    private Integer loaiDon;
+    private int trangThai;
+    private int loaiDon;
     private String hinhThucThanhToan;
 }
